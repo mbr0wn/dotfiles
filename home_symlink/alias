@@ -1,0 +1,18 @@
+alias c=cd
+
+alias beep='echo -en "\007"'
+alias cd..='cd ..'
+
+alias ..="cd .."
+alias ...="cd ../.."
+
+alias md=mkdir
+alias rd=rmdir
+alias c=cd
+
+alias ls="ls --color=auto -FG"
+alias ll="ls --color=auto -lhF"
+alias l=ls
+
+alias tree="git log --graph --decorate --pretty=oneline --abbrev-commit"
+alias gr="grep --exclude-dir=build --exclude-dir=swig --exclude-dir=.git --exclude=tags -rniI "

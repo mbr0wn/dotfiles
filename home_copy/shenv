@@ -1,0 +1,45 @@
+# Common environment variables for bash and zsh
+export EDITOR=/usr/bin/vim
+
+# ccache and ~/bin
+export PATH=/usr/lib/ccache:~/bin:$PATH
+export MANPATH=$MANPATH:~/man/
+
+# ZPU compiler
+ZPUPREFIX=~/.usrlocal-zpu
+export PATH=$PATH:$ZPUPREFIX/bin
+export LD_LOAD_LIBRARY=$LD_LOAD_LIBRARY:$ZPUPREFIX/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ZPUPREFIX/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$ZPUPREFIX/lib/pkgconfig
+
+# UHD
+UHDPREFIX=~/.usrlocal-uhd
+export PATH=$PATH:$UHDPREFIX/bin
+export LD_LOAD_LIBRARY=$LD_LOAD_LIBRARY:$UHDPREFIX/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$UHDPREFIX/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$UHDPREFIX/lib/pkgconfig
+export CPATH=~/.usrlocal-uhd/include
+
+export UHD_LOG_LEVEL=regularly
+export UHD_TEMP_PATH=/home/mbr0wn/tmp
+
+# GNU Radio
+GRPREFIX=~/.usrlocal-gnuradio
+export PATH=$PATH:$GRPREFIX/bin
+export LD_LOAD_LIBRARY=$LD_LOAD_LIBRARY:$GRPREFIX/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GRPREFIX/lib
+export PYTHONPATH=$PYTHONPATH:$GRPREFIX/lib/python2.7/dist-packages
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$GRPREFIX/lib/pkgconfig
+export GRC_BLOCKS_PATH=$GRC_BLOCKS_PATH:$GRPREFIX/share/gnuradio/grc/blocks
+
+# Xilinx
+export PATH=$PATH:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/xtclsh
+
+# ls and grep
+eval `dircolors -b`
+export GREP_COLOR='1;31' # spidergreeeeeeeen!
+
+export LC_ALL=en_US.UTF-8
+
+# Whatever this does
+export _JAVA_AWT_WM_NONREPARENTING=1

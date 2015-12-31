@@ -1,0 +1,7 @@
+"1.1 (created: 2011/11/13 17:32:11)
+
+nmap l :emenu<Space>Message.Reply<Space>to<Space>List<Return>
+nmap y ia
+source! /home/mbant/.muttatorrc.local
+
+" vim: set ft=muttator:

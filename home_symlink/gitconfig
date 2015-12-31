@@ -1,0 +1,54 @@
+[user]
+	name = Martin Braun
+	email = martin.braun@ettus.com
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[alias]
+	st = status
+	stat = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	dc = diff --cached
+	lg = log -p
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
+	up = fetch --all -p
+	cp = cherry-pick
+	cob = checkout -b
+	ld = !git pull --rebase --prune $@ && git submodule update --init --recursive
+        save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = commit -am "#WIP"
+        undo = reset HEAD~1 --mixed
+	amend = commit --amend -a
+	# Hard reset, but save to a savepoint first
+        wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+	# Delete all branches that are merged into given branch (default: master)
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | grep -v maint | xargs -r git branch -d; }; f"
+	# Check out a branch, then clean out all the branches that are merged into this
+        bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+	# Show files ignored by git:
+	ign = ls-files -o -i --exclude-standard
+	push-test = !git push $@ && ~/src/misc/bin/start-uhd-rts.py --branch `git rev-parse --abbrev-ref HEAD` --email martin.braun@ettus.com
+[core]
+	autocrlf = input
+[reviewboard]
+	url = http://review-board.natinst.com
+[push]
+	default = simple
+# vim:ft=gitconfig:
