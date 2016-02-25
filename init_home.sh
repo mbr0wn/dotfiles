@@ -46,7 +46,7 @@ ln -s .vim/vimrc .vimrc
 
 echo "== Cloning zsh config..."
 check_and_backup .oh-my-zsh
-git clone --recursive git@github.com:mbr0wn/oh-my-zsh.git .oh-my.zsh
+git clone --recursive git@github.com:mbr0wn/oh-my-zsh.git .oh-my-zsh
 if [ -x /bin/zsh ]; then
 	echo "Selecting zsh as default shell (will ask for password)..."
 	chsh -s /bin/zsh
