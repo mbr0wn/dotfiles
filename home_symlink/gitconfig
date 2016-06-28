@@ -44,7 +44,7 @@
         bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
-	push-test = !git push $@ && ~/src/misc/bin/start-uhd-rts.py --branch `git rev-parse --abbrev-ref HEAD` --email martin.braun@ettus.com
+	push-test = !git push $@ && ~/src/ettools/start-uhd-rts.py --branch `git rev-parse --abbrev-ref HEAD` --email martin.braun@ettus.com && true
 [core]
 	autocrlf = input
 [reviewboard]
@@ -52,3 +52,5 @@
 [push]
 	default = simple
 # vim:ft=gitconfig:
+[rebase]
+	autosquash = true
