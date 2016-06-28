@@ -5,5 +5,5 @@
 :set gui=nonavigation
 
 :map <C-S-t> :set gui!=nonavigation,navigation<CR>
-:map <F9> :emenu Tools.Clearly<CR>
+:map <F9> :emenu View.Enter Reader View<CR>
 :autocmd LocationChange .* js modes.passAllKeys = /google\.com|mbant\.de\/reader|astro/.test(buffer.URL)
