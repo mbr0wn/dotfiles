@@ -54,3 +54,7 @@
 # vim:ft=gitconfig:
 [rebase]
 	autosquash = true
+[mergetool "fugitive"]
+	cmd = gvim -f -c \"Gdiff\" \"$MERGED\"
+[merge]
+	tool = fugitive
