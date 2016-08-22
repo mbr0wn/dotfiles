@@ -45,6 +45,8 @@
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
 	push-test = !git push $@ && ~/src/ettools/start-uhd-rts.py --branch `git rev-parse --abbrev-ref HEAD` --email martin.braun@ettus.com && true
+	track = add --intent-to-add
+	track-all = !git add --intent-to-add $(git ls-files -o --exclude-standard)
 [core]
 	autocrlf = input
 [reviewboard]
