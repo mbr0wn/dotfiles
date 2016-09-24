@@ -57,6 +57,6 @@
 [rebase]
 	autosquash = true
 [mergetool "fugitive"]
-	cmd = gvim -f -c \"Gdiff\" \"$MERGED\"
+	cmd = gvim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
 	tool = fugitive
