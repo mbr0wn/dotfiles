@@ -1,3 +1,4 @@
+# vim:ft=gitconfig:
 [user]
 	name = Martin Braun
 	email = martin.braun@ettus.com
@@ -53,7 +54,6 @@
 	url = http://review-board.natinst.com
 [push]
 	default = simple
-# vim:ft=gitconfig:
 [rebase]
 	autosquash = true
 [mergetool "fugitive"]
