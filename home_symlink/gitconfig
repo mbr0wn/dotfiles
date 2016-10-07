@@ -39,12 +39,13 @@
 	amend = commit --amend -a
 	# Hard reset, but save to a savepoint first
         wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-	# Delete all branches that are merged into given branch (default: master)
-	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | grep -v maint | xargs -r git branch -d; }; f"
+	# Delete all branches that are merged into a given branch (default: master)
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | grep -v maint | grep -v UHD-3.9.LTS | grep -v master | xargs -r git branch -d; }; f"
 	# Check out a branch, then clean out all the branches that are merged into this
         bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
+	ppush = "!f() { git push && git push ${2-public} $1; }; f `git rev-parse --abbrev-ref HEAD`"
 	push-test = !git push $@ && ~/src/ettools/start-uhd-rts.py --branch `git rev-parse --abbrev-ref HEAD` --email martin.braun@ettus.com && true
 	track = add --intent-to-add
 	track-all = !git add --intent-to-add $(git ls-files -o --exclude-standard)
@@ -60,3 +61,5 @@
 	cmd = gvim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
 	tool = fugitive
+[diff]
+	tool = vimdiff
