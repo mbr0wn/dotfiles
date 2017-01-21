@@ -107,22 +107,22 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) =
   -- mod-shift-{u,i}, Move client and shift to {prev,next} workspace
   -- Requires Xmonad.Actions.CycleWS
   --
-  [ ((modm               , xK_u	), prevWS)
-  , ((modm               , xK_i	), nextWS)
-  , ((modm .|. shiftMask , xK_u	), shiftToPrev >> prevWS)
-  , ((modm .|. shiftMask , xK_i	), shiftToNext >> nextWS)
+  [ ((modm               , xK_u), prevWS)
+  , ((modm               , xK_i), nextWS)
+  , ((modm .|. shiftMask , xK_u), shiftToPrev >> prevWS)
+  , ((modm .|. shiftMask , xK_i), shiftToNext >> nextWS)
   ]
   ++
   -- mod-{e,w,r}, Switch to physical/Xinerama screens 1, 2, or 3
   -- mod-shift-{e,w,r}, Move client to screen 1, 2, or 3
   [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-	, (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+           , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
   ++
   -- General keybindings:
   -- ====================
   [
-	((0, xK_Print),                spawn "scrot")
+      ((0, xK_Print),                spawn "scrot")
       , ((controlMask, xK_Print),      spawn "sleep 0.2; scrot -s") -- C-Print does screenshot of window
       {-, ((0, xF86XK_AudioMute),        spawn "amixer -q set Speaker toggle")-}
       {-, ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Speaker 2+")-}
