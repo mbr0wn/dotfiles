@@ -3,20 +3,20 @@
 -- Xmonad config
 --
 
---{{{ Imports 
+--{{{ Imports
 import Data.List
- 
+
 import Graphics.X11.ExtraTypes.XF86
 import Graphics.X11.Xlib
- 
+
 import System.IO
- 
+
 import XMonad
 import XMonad.Config.Kde
 import XMonad.Core
 
 import XMonad.Actions.CycleWS
- 
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -57,8 +57,8 @@ main = xmonad kde4Config
     }
 
 myTerminal = "konsole"
--- Need to spawn xcompmgr myself, because if I use KDE startup methods, it
--- can get spawned too late:
+-- Need to spawn xcompmgr myself, because if I use KDE startup methods, it can
+-- get spawned too late:
 startup :: X ()
 startup = do
     spawn "xcompmgr -c"
@@ -78,10 +78,12 @@ myManageHook = composeAll . concat $
     , [ className   =? c --> doF (W.shift "2") | c <- webApps]
     , [ className   =? c --> doF (W.shift "3") | c <- ircApps]
     , [ className   =? c --> doF (W.shift "8") | c <- kdeApps]
+    , [ className   =? c --> doF (W.focusDown) | c <- myAvoidMaster]
     ]
   where myFloats      = ["MPlayer", "Gimp", "plasmashell"]
         myOtherFloats = ["alsamixer"]
-        webApps       = ["Firefox", "Opera"] -- open on desktop 2
+        myAvoidMaster = ["plasmashell", "kded5"]
+        webApps       = ["Firefox", "Opera"]     -- open on desktop 2
         ircApps       = ["Ksirc"]                -- open on desktop 3
         kdeApps       = ["dolphin"]              -- open on desktop 8
 
@@ -126,6 +128,7 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) =
       {-, ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Speaker 2+")-}
       {-, ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Speaker 2-")-}
       , ((modm .|. controlMask, xK_l), spawn "slock" )
+      , ((modm .|. controlMask, xK_k), spawn "xset dpms force off" )
       {-, ((0, xF86XK_HomePage),         windows $ W.view "1:sh")-}
       {-, ((0, xF86XK_Search),           spawn "dolphin")-}
       , ((modm, xK_s),                 scratchPad )
