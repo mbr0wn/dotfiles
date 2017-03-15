@@ -54,3 +54,7 @@ else
 	echo "zsh not found/installed. Not running chsh."
 fi
 
+echo "== Cloning tmux plugins..."
+check_and_backup .tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "To install tmux plugins, hit prefix + I in a tmux session."
