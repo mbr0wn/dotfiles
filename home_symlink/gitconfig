@@ -59,7 +59,9 @@
 	autosquash = true
 [mergetool "fugitive"]
 	cmd = gvim -f -c \"Gvdiff\" \"$MERGED\"
+[difftool "gvimdifff"]
+	cmd = gvimdiff -f \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = fugitive
 [diff]
-	tool = vimdiff
+	tool = meld
