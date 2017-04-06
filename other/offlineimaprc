@@ -1,0 +1,20 @@
+# vim: set ft=cfg:
+[general]
+ui = ttyui
+accounts = GMAILACCOUNT
+
+[Account GMAILACCOUNT]
+localrepository = GMAILACCOUNT-Local
+remoterepository = GMAILACCOUNT-Remote
+
+[Repository GMAILACCOUNT-Local]
+type = Maildir
+localfolders = ~/Mail/GMAILACCOUNT
+
+[Repository GMAILACCOUNT-Remote]
+type = Gmail
+remoteuser = user
+remotepass = pass
+realdelete = no
+maxconnections = 3
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
