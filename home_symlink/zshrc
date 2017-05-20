@@ -40,11 +40,14 @@ if [ -n "$TMUX" ]; then
 	export TERM=screen-256color
 fi
 
+# Load FZF
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+source ~/.fzf.zsh
+
 ### PATHS ###################################################################
 # etc.
 source ~/.shenv
-
-export DEFAULT_USER=mbant
 
 ### ALIASES #################################################################
 # Anything compatible to Bash
