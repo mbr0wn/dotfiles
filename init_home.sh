@@ -43,6 +43,7 @@ check_and_backup .vim
 check_and_backup .vimrc
 git clone --recursive git@github.com:mbr0wn/vimrc.git .vim
 ln -s .vim/vimrc .vimrc
+(cd ~/.vim/bundle/fzf && ./install --all)
 
 echo "== Cloning zsh config..."
 check_and_backup .oh-my-zsh
