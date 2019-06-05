@@ -36,6 +36,7 @@
 	push-test = !git push $@ && ~/src/ettools/start-uhd-rts.py --branch `git rev-parse --abbrev-ref HEAD` --email martin.braun@ettus.com && true
 	track = add --intent-to-add
 	track-all = !git add --intent-to-add $(git ls-files -o --exclude-standard)
+	# <base_branch> <num_commits_to_cp>
 	cpr = "!f() { git checkout $2 && git checkout -b __TEMP__ && git cherry-pick $1~${3-1}..$1 && git checkout $1 && git reset --hard __TEMP__ && git branch -D __TEMP__; }; f `git rev-parse --abbrev-ref HEAD` $1 $2"
 	drop = "!f() { __branch=`git rev-parse --abbrev-ref HEAD` && git checkout master && git branch -D $__branch; }; f"
 [core]
@@ -46,6 +47,10 @@
 	default = simple
 [rebase]
 	autosquash = true
+[mergetool "fugitive"]
+	cmd = ktvim -f -c \"Gvdiff\" \"$MERGED\"
+[mergetool "gfugitive"]
+	cmd = gvim -f -c \"Gvdiff\" \"$MERGED\"
 [mergetool "fugitive"]
 	cmd = gvim -f -c \"Gvdiff\" \"$MERGED\"
 [difftool "gvimdifff"]
