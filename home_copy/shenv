@@ -20,7 +20,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$UHDPREFIX/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$UHDPREFIX/lib/pkgconfig
 export CPATH=~/.usrlocal-uhd/include
 
-export UHD_LOG_LEVEL=regularly
 export UHD_TEMP_PATH=/home/mbr0wn/tmp
 
 # GNU Radio
@@ -37,6 +36,7 @@ export PATH=$PATH:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64:/opt/Xilinx/14.7/ISE_DS/
 
 # ls and grep
 eval `dircolors -b`
+#eval `dircolors -b ~/src/dotfiles/other/solarized_dircolors.db`
 export GREP_COLOR='1;31' # spidergreeeeeeeen!
 
 export LC_ALL=en_US.UTF-8
