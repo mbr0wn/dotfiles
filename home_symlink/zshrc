@@ -60,6 +60,11 @@ source ~/.shenv
 # Anything compatible to Bash
 source ~/.alias
 
+# Command aliases not compatible to bash
+if (( $+commands[exa] )); then
+	alias ls=exa
+fi
+
 # Suffix aliases (entering foo.tex starts gvim w/ foo.tex)
 alias -s tex="gvim"
 alias -s txt="vim"
